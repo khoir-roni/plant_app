@@ -11,6 +11,11 @@ class PlantApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: green,
+        accentColor: Color(0xFFD8ECF1),
+        scaffoldBackgroundColor: Color(0xFFF3F5F7),
+      ),
       home: HomePageScreen(),
     );
   }
