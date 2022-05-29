@@ -56,72 +56,63 @@ class _FirstPageState extends State<FirstPage> {
       width: 7,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: indexPages == index ?  Color(0xff2DDA93):Color(0xFFDBDBDB) ,
+        color: indexPages == index
+            ? const Color(0xff2DDA93)
+            : const Color(0xFFDBDBDB),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final _deviceSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.only(top: 147, left: 23, right: 23),
-        child: Column(
-          children: [
-            Center(
-              child: Image.asset(
-                listOfTexts[indexPages]['image'],
-                height: 255.14,
-                width: 255,
+      body: SizedBox(
+        height: _deviceSize.height,
+        width: _deviceSize.width,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 147, left: 23, right: 23),
+          child: Column(
+            children: [
+              Center(
+                child: Image.asset(
+                  listOfTexts[indexPages]['image'],
+                  height: 255.14,
+                  width: 255,
+                ),
               ),
-            ),
-            const SizedBox(height: 64),
-            Text(
-              listOfTexts[indexPages]['title'],
-              style: titleTextStyle,
-            ),
-            const SizedBox(height: 23),
-            Text(
-              listOfTexts[indexPages]['subTitle'],
-              style: subTitleTextStyle,
-              textAlign: TextAlign.center,
-            ),
-            const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: listOfTexts
-                  .asMap()
-                  .entries
-                  .map((MapEntry e) => _boxDot(e.key))
-                  .toList(),
-            ),
-            
-            const SizedBox(height: 10),
-          ],
+              const SizedBox(height: 64),
+              Text(
+                listOfTexts[indexPages]['title'],
+                style: titleTextStyle,
+              ),
+              const SizedBox(height: 23),
+              Text(
+                listOfTexts[indexPages]['subTitle'],
+                style: subTitleTextStyle,
+                textAlign: TextAlign.center,
+              ),
+              const Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: listOfTexts
+                    .asMap()
+                    .entries
+                    .map((MapEntry e) => _boxDot(e.key))
+                    .toList(),
+              ),
+              const SizedBox(height: 10),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(left: 23, right: 23, bottom: 23),
-        child: InkWell(
-          onTap: () {
-            changePages();
-          },
-          child: Container(
-            height: 50,
-            width: 329,
-            decoration: const BoxDecoration(
-              color: Color(0xff2DDA93),
-            ),
-            child: const Align(
-              child: Text(
-                'Next',
-                style: TextStyle(
-                  color: Color(0xffffffff),
-                  fontSize: 15,
-                ),
-              ),
-            ),
-          ),
+        child: buttonFlat(
+          label: 'Next',
+          heightButton: 50,
+          widthButton: _deviceSize.width * 0.75,
+          onPress: () => changePages(),
         ),
       ),
     );

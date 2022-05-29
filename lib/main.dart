@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/pages/first_page.dart';
+import 'package:plant_app/pages/home_page_screen.dart';
 import 'package:plant_app/pages/login_screen.dart';
 import 'package:plant_app/widgets/thames.dart';
 
@@ -10,7 +11,7 @@ class PlantApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: FirstPage(),
+      home: HomePageScreen(),
     );
   }
 }
