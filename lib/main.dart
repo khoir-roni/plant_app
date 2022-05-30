@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:plant_app/pages/first_page.dart';
-import 'package:plant_app/pages/home_page_screen.dart';
-import 'package:plant_app/pages/login_screen.dart';
+import './pages/first_page.dart';
+
 import 'package:plant_app/widgets/thames.dart';
 
 void main() => runApp(PlantApp());
 
+// ignore: use_key_in_widget_constructors
 class PlantApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,10 +13,11 @@ class PlantApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: green,
-        accentColor: Color(0xFFD8ECF1),
-        scaffoldBackgroundColor: Color(0xFFF3F5F7),
+        // ignore: deprecated_member_use
+        accentColor: const Color(0xFFD8ECF1),
+        scaffoldBackgroundColor: const Color(0xFFF3F5F7),
       ),
-      home: HomePageScreen(),
+      home: const FirstPage(),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plant_app/widgets/plant_type_carousel.dart';
 
+// ignore: use_key_in_widget_constructors
 class HomePageScreen extends StatefulWidget {
   @override
   State<HomePageScreen> createState() => _HomePageScreenState();
@@ -59,7 +60,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
               fontWeight: FontWeight.w600,
               color: _selectedIdex == index
                   ? const Color(0xffffffff)
-                  : Color(0xff6A6F7D),
+                  : const Color(0xff6A6F7D),
             ),
           ),
         ]),
@@ -69,6 +70,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("build  homeScreen");
     final _deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
@@ -108,7 +110,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                   fontFamily: 'SF-Pro-Text',
                                   fontSize: 21,
                                   fontWeight: FontWeight.w700,
-                                  color: const Color(0xffffffff),
+                                  color:  Color(0xffffffff),
                                 ),
                               ),
                               SizedBox(
@@ -120,7 +122,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                   fontFamily: 'SF-Pro-Text',
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
-                                  color: const Color(0xffffffff),
+                                  color:  Color(0xffffffff),
                                 ),
                               ),
                             ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/pages/first_page.dart';
+import 'package:plant_app/pages/home_page_screen.dart';
 
 import 'package:plant_app/widgets/thames.dart';
 
@@ -24,6 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("build  loginScreen");
     final _deviceSize = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -36,12 +38,17 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               IconButton(
-                  onPressed: () {
+                  onPressed:
+                      // () {
+                      //   Navigator.pop(context);
+                      // },
+                      () {
                     Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => FirstPage(),
-                        ));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const FirstPage(),
+                      ),
+                    );
                   },
                   icon: const Icon(Icons.arrow_back_ios)),
               Column(
@@ -105,7 +112,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   buttonFlat(
-                      label: 'LOGIN', widthButton: _deviceSize.width * 0.75),
+                      label: 'LOGIN',
+                      widthButton: _deviceSize.width * 0.75,
+                      onPress: () => Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                            builder: (context) => HomePageScreen(),
+                          ))),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

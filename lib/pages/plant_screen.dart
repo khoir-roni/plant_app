@@ -3,28 +3,15 @@ import 'package:flutter/material.dart';
 import '../models/plant_model.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class PlantScreen extends StatefulWidget {
+class PlantScreen extends StatelessWidget {
   final Plant plant;
 
-  // ignore: unnecessary_statements
+  // ignore: use_key_in_widget_constructors
   const PlantScreen({this.plant});
 
   @override
-  _PlantScreenState createState() => _PlantScreenState();
-}
-
-class _PlantScreenState extends State<PlantScreen> {
-  _buildRatingStars(int rating) {
-    String stars = '';
-    for (int i = 0; i < rating; i++) {
-      stars += '⭐ ';
-    }
-    stars.trim();
-    return Text(stars);
-  }
-
-  @override
   Widget build(BuildContext context) {
+    print("build  plantscreen");
     return Scaffold(
       body: Column(
         children: [
@@ -34,7 +21,7 @@ class _PlantScreenState extends State<PlantScreen> {
                 height: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30.0),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black26,
                       offset: Offset(0.0, 2.0),
@@ -43,11 +30,11 @@ class _PlantScreenState extends State<PlantScreen> {
                   ],
                 ),
                 child: Hero(
-                  tag: widget.plant.imageUrl,
+                  tag: plant.imageUrl,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(30.0),
                     child: Image(
-                      image: AssetImage(widget.plant.imageUrl),
+                      image: NetworkImage(plant.imageUrl),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -63,23 +50,25 @@ class _PlantScreenState extends State<PlantScreen> {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(Icons.arrow_back),
+                      icon: const Icon(Icons.arrow_back),
                       iconSize: 30.0,
-                      color: Colors.black,
+                      color: Colors.white,
                     ),
                     Row(
                       children: [
                         IconButton(
                           onPressed: () => Navigator.pop(context),
-                          icon: Icon(FontAwesomeIcons.search),
+                          // ignore: deprecated_member_use
+                          icon: const Icon(FontAwesomeIcons.search),
                           iconSize: 25.0,
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                         IconButton(
                           onPressed: () => Navigator.pop(context),
-                          icon: Icon(FontAwesomeIcons.sortAmountDown),
+                          // ignore: deprecated_member_use
+                          icon: const Icon(FontAwesomeIcons.sortAmountDown),
                           iconSize: 25.0,
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ],
                     ),
@@ -93,27 +82,33 @@ class _PlantScreenState extends State<PlantScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'widget.plant.city',
+                      plant.nameOfPlant,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
                         letterSpacing: 1.2,
+                        shadows: [
+                          Shadow(
+                              color: Colors.black.withOpacity(0.9),
+                              offset: const Offset(5, 5),
+                              blurRadius: 15),
+                        ],
                       ),
                     ),
                     Row(
                       children: [
-                        Icon(
-                          FontAwesomeIcons.plane,
+                        const Icon(
+                          FontAwesomeIcons.dollarSign,
                           size: 9.0,
                           color: Colors.white70,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5.0,
                         ),
                         Text(
-                          widget.plant.price,
-                          style: TextStyle(
+                          plant.price,
+                          style: const TextStyle(
                             color: Colors.white70,
                             fontSize: 9.0,
                             fontWeight: FontWeight.bold,
@@ -125,142 +120,42 @@ class _PlantScreenState extends State<PlantScreen> {
                   ],
                 ),
               ),
-              Positioned(
-                right: 20,
-                bottom: 20,
-                child: Icon(
-                  Icons.location_on,
-                  color: Colors.white70,
-                  size: 25.0,
-                ),
-              ),
             ],
           ),
           Expanded(
-            child: ListView.builder(
-              padding: EdgeInsets.only(
-                top: 10.0,
-                bottom: 15.0,
-              ),
-              // itemCount: widget.plant.activities.length,
-              itemBuilder: (BuildContext context, int index) {
-                // Activity activity = widget.plant.activities[index];
-
-                return Stack(
+            child: SingleChildScrollView(
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(40.0, 5.0, 20.0, 5.0),
-                      height: 170,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(100.0, 20.0, 20.0, 20.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 120.0,
-                                  child: Text(
-                                    'activity.name',
-                                    style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                ),
-                                Column(
-                                  children: [
-                                    Text(
-                                      "'\$\${activity.price}'",
-                                      style: TextStyle(
-                                        fontSize: 22.0,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    Text(
-                                      'per pax',
-                                      style: TextStyle(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Text(
-                              'activity.type',
-                              style: TextStyle(
-                                color: Colors.grey,
-                              ),
-                            ),
-                            _buildRatingStars(1),
-                            SizedBox(
-                              height: 10.0,
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  width: 70.0,
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context).accentColor,
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    'activity.startTimes[0]',
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 20.0,
-                                ),
-                                Container(
-                                  width: 70.0,
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context).accentColor,
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  alignment: Alignment.center,
-                                  child: Text(
-                                    'activity.startTimes[1]',
-                                  ),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
+                    const Text('Descriptions',
+                        style: TextStyle(
+                          fontFamily: 'SF-Pro-Text',
+                          fontSize: 21,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black,
+                        )),
+                    const SizedBox(
+                      height: 10,
                     ),
-                    Positioned(
-                      left: 20.0,
-                      top: 15.0,
-                      bottom: 15.0,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20.0),
-                        child: Image(
-                          width: 110.0,
-                          image: AssetImage(
-                            'images/read.png',
-                          ),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    )
+                    Text(plant.description,
+                        style: const TextStyle(
+                          fontFamily: 'SF-Pro-Text',
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          height: 1.5,
+                          color: Colors.black,
+                        )),
                   ],
-                );
-              },
+                ),
+              ),
             ),
-          ),
+          )
         ],
       ),
     );

@@ -3,6 +3,8 @@ import 'package:plant_app/pages/login_screen.dart';
 import 'package:plant_app/widgets/thames.dart';
 
 class FirstPage extends StatefulWidget {
+  const FirstPage({Key key}) : super(key: key);
+
   @override
   State<FirstPage> createState() => _FirstPageState();
 }
@@ -35,7 +37,7 @@ class _FirstPageState extends State<FirstPage> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => LoginScreen(),
+            builder: (context) => const LoginScreen(),
           ));
     } else {
       setState(() {
@@ -51,7 +53,7 @@ class _FirstPageState extends State<FirstPage> {
 
   Widget _boxDot(int index) {
     return Container(
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       height: 7,
       width: 7,
       decoration: BoxDecoration(
@@ -65,6 +67,7 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   Widget build(BuildContext context) {
+    print("build firt page");
     final _deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SizedBox(

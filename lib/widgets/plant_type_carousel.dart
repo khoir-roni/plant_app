@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plant_app/pages/plant_screen.dart';
 import '../models/plant_model.dart';
 
+// ignore: use_key_in_widget_constructors
 class PlantCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,7 @@ class PlantCarousel extends StatelessWidget {
                   ),
                 ),
                 child: Container(
-                  margin: EdgeInsets.all(10.0),
+                  margin: const EdgeInsets.all(10.0),
                   width: 210.0,
                   //color: Colors.red,
                   child: Stack(
@@ -77,7 +78,7 @@ class PlantCarousel extends StatelessWidget {
                             child: Text(
                               plant.description,
                               overflow: TextOverflow.fade,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.grey,
                               ),
                             ),
@@ -88,7 +89,7 @@ class PlantCarousel extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20.0),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               offset: Offset(0.0, 2.0),
@@ -116,28 +117,40 @@ class PlantCarousel extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    plant.nameOfPlant,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24.0,
-                                      fontWeight: FontWeight.bold,
-                                      letterSpacing: 1.2,
+                                  SizedBox(
+                                    width: 180,
+                                    child: Text(
+                                      plant.nameOfPlant,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 24.0,
+                                        fontWeight: FontWeight.bold,
+                                        letterSpacing: 1.2,
+                                        shadows: [
+                                          Shadow(
+                                              color:
+                                                  Colors.black.withOpacity(0.9),
+                                              offset: const Offset(5, 5),
+                                              blurRadius: 15),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Row(
                                     children: [
-                                      Icon(
-                                        FontAwesomeIcons.plane,
+                                      const Icon(
+                                        FontAwesomeIcons.dollarSign,
                                         size: 9.0,
                                         color: Colors.white,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 5.0,
                                       ),
                                       Text(
                                         plant.price,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 9.0,
                                           fontWeight: FontWeight.bold,
