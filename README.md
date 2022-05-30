@@ -1,8 +1,8 @@
 # plant_app
 
 A new Flutter project.
-ui reference
-[Plant App | UI Design & Illustration Freebie] (https://dribbble.com/shots/14396183-Plant-App-UI-Design-Illustration-Freebie)
+ui reference.
+[Plant App | UI Design & Illustration Freebie](https://dribbble.com/shots/14396183-Plant-App-UI-Design-Illustration-Freebie)
 
 ## Getting Started
 
