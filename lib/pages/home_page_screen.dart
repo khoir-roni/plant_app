@@ -73,10 +73,10 @@ class _HomePageScreenState extends State<HomePageScreen> {
     print("build  homeScreen");
     final _deviceSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SizedBox(
-          height: _deviceSize.height,
-          width: _deviceSize.width,
+      body: SizedBox(
+        height: _deviceSize.height,
+        width: _deviceSize.width,
+        child: SingleChildScrollView(
           child: Stack(
             children: [
               Column(
@@ -110,7 +110,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                   fontFamily: 'SF-Pro-Text',
                                   fontSize: 21,
                                   fontWeight: FontWeight.w700,
-                                  color:  Color(0xffffffff),
+                                  color: Color(0xffffffff),
                                 ),
                               ),
                               SizedBox(
@@ -122,7 +122,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
                                   fontFamily: 'SF-Pro-Text',
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
-                                  color:  Color(0xffffffff),
+                                  color: Color(0xffffffff),
                                 ),
                               ),
                             ],

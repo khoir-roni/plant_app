@@ -80,8 +80,8 @@ class _WelcomePageState extends State<WelcomePage> {
               Center(
                 child: Image.asset(
                   listOfTexts[indexPages]['image'],
-                  height: 255.14,
-                  width: 255,
+                  height: _deviceSize.height <= 700 ? 150 : 255,
+                  // width: 255,
                 ),
               ),
               const SizedBox(height: 64),
