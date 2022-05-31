@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:plant_app/pages/login_screen.dart';
 import 'package:plant_app/widgets/thames.dart';
 
-class FirstPage extends StatefulWidget {
-  const FirstPage({Key key}) : super(key: key);
+class WelcomePage extends StatefulWidget {
+  const WelcomePage({Key key}) : super(key: key);
 
   @override
-  State<FirstPage> createState() => _FirstPageState();
+  State<WelcomePage> createState() => _WelcomePageState();
 }
 
-class _FirstPageState extends State<FirstPage> {
+class _WelcomePageState extends State<WelcomePage> {
   int indexPages = 0;
   List listOfTexts = const [
     {
@@ -37,7 +37,7 @@ class _FirstPageState extends State<FirstPage> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => const LoginScreen(),
+            builder: (context) => LoginScreen(),
           ));
     } else {
       setState(() {
@@ -67,7 +67,7 @@ class _FirstPageState extends State<FirstPage> {
 
   @override
   Widget build(BuildContext context) {
-    print("build firt page");
+    print("build first page");
     final _deviceSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SizedBox(

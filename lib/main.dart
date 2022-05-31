@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './pages/first_page.dart';
+import 'pages/welcome_page.dart';
 
 import 'package:plant_app/widgets/thames.dart';
 
@@ -17,7 +17,7 @@ class PlantApp extends StatelessWidget {
         accentColor: const Color(0xFFD8ECF1),
         scaffoldBackgroundColor: const Color(0xFFF3F5F7),
       ),
-      home: const FirstPage(),
+      home: const WelcomePage(),
     );
   }
 }

@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:plant_app/pages/first_page.dart';
+import 'package:plant_app/pages/welcome_page.dart';
 import 'package:plant_app/pages/home_page_screen.dart';
 
 import 'package:plant_app/widgets/thames.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key key}) : super(key: key);
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreen extends StatelessWidget {
   Widget textField(String label, TextStyle style) {
     return TextField(
       decoration: InputDecoration(
@@ -46,7 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const FirstPage(),
+                        builder: (context) => const WelcomePage(),
                       ),
                     );
                   },
