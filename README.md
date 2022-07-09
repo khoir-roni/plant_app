@@ -1,6 +1,7 @@
 # plant_app
 
 A new Flutter project.
+[Demo the APP](https://khoir-roni.github.io/plant_app/)
 
 ui reference.
 
